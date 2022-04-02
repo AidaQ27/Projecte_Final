@@ -19,93 +19,98 @@
 
             <h1>Compra de Cripto</h1>
 
-
-            <div class="columns">
-
-                <div class="column is-half">
-                    <label class="label">From:</label>
-                    <form action="/purchase" method="post">
-                    <div class="control">
-                        <div class="select">
-                            <select name="from" id="from">
-                                <option value="EUR">EUR</option>
-                                <option value="ETH">ETH</option>
-                                <option value="BNB">BNB</option>
-                                <option value="LUNA">LUNA</option>
-                                <option value="SOL">SOL</option>
-                                <option value="BTC">BTC</option>
-                                <option value="BCH">BCH</option>
-                                <option value="LINK">LINK</option>
-                                <option value="ATOM">ATOM</option>
-                                <option value="USDT">USDT</option>
-                            </select>
+            <form action="/purchase" method="post"></form>
+                <div class="columns">
+                    <div class="column is-5">
+                        <label class="label" name="from" id="from" >From:</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="from" id="from">
+                                    <option value="EUR">EUR</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="BNB">BNB</option>
+                                    <option value="LUNA">LUNA</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="BTC">BTC</option>
+                                    <option value="BCH">BCH</option>
+                                    <option value="LINK">LINK</option>
+                                    <option value="ATOM">ATOM</option>
+                                    <option value="USDT">USDT</option>
+                                </select>
+                            </div>
+                            <p class="help">Escoge una moneda</p>
                         </div>
-                        <p class="help">Escoge una moneda</p>
+                    </div>
+            
+                
+
+                    <div class="column is-12">
+                        <label class="label" name="to" id="to">To:</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="to" id="to">
+                                        <option value="EUR">EUR</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="BNB">BNB</option>
+                                        <option value="LUNA">LUNA</option>
+                                        <option value="SOL">SOL</option>
+                                        <option value="BTC">BTC</option>
+                                        <option value="BCH">BCH</option>
+                                        <option value="LINK">LINK</option>
+                                        <option value="ATOM">ATOM</option>
+                                        <option value="USDT">USDT</option>
+                                    </select>
+                                </div>
+                                <p class="help">Escoge una moneda</p>
+                            </div>
                     </div>
                 </div>
-        
-            
 
-                <div class="column is-half right">
-                    <label class="label">To:</label>
-                    <form action="/purchase" method="post">
-                    <div class="control">
-                        <div class="select">
-                            <select name="to" id="to">
-                                <option value="EUR">EUR</option>
-                                <option value="ETH">ETH</option>
-                                <option value="BNB">BNB</option>
-                                <option value="LUNA">LUNA</option>
-                                <option value="SOL">SOL</option>
-                                <option value="BTC">BTC</option>
-                                <option value="BCH">BCH</option>
-                                <option value="LINK">LINK</option>
-                                <option value="ATOM">ATOM</option>
-                                <option value="USDT">USDT</option>
-                            </select>
+
+                    <div class="columns">
+                        <div class="column is-5">
+                            <label class="label ">Cantidad</label>
+                            <div class="control">
+                                <input class="input" type="number" placeholder="Cantidad" name="cantidadf" id="cantidadf" step="'0.01" min="0.01">
+                            </div>
+                            <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
                         </div>
-                        <p class="help">Escoge una moneda</p>
+
+                        <div class="column is-12">
+                            <div class="box">
+                                <label class="label" name="cantidadt" id="cantidadt" >Cantidad</label>
+                                    I'm in a box.
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
+                    <div class="columns">
+                        <div class="column is-5">
+                            <button class="button is-primary" name="calcular" id="calcular" >Calcular</button>
+                        </div>
 
-            <div class="columns">
-                <div class="column is-half">
-                    <label class="label ">Cantidad</label>
-                    <div class="control">
-                        <input class="input" type="number" placeholder="number input">
+                        <div class="column is-12">
+                            <div class="box" name="preciounidad" id="preciounidad">
+                                <label class="label">Precio Unidad</label>
+                                    I'm in a box.
+                            </div>
+                        </div>
                     </div>
-                    <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
-                </div>
 
-                <button class="button is-success">
-                    <span class="icon is-small">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span>Calcular</span>
-                  </button>
+                    <div class="columns">
+                        <div class="column is-5" name="borrar" id="borrar">
+                            <button class="button is-primary">Borrar</button>
+                        </div>
 
-              
-
-                <div class="box">
-                    <label class="label">Cantidad</label>
-                        I'm in a box.
-                </div>
-            </div>
-            
-
-
-
-
-
-            
+                        <div class="column is-12" name="ok" id="ok" >
+                            <button class="button is-primary">Guardar</button>
+                        </div>
+                    </div>
 
             </form>
+    </section>
 
 
-
-        </section>
 
     <footer>
         <div class="container">

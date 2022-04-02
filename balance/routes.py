@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from balance import app
 
 
@@ -30,8 +30,9 @@ def inicio():
     return render_template('principal.html', moviments = llista_moviments)
 
 
-@app.route('/purchase')
+@app.route('/purchase', methods=['GET', 'POST'])
 def compra():
+    print(request.method)
     return render_template('purchase.html')
 
 
