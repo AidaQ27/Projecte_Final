@@ -1,0 +1,57 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>myCrypto | Movimientos</title>
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/css/bulma.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                myCrypto
+            </div>
+        </header>
+        <section class="container">
+            <h1>Movimientos</h1>
+            <table class="taula_moviments">
+                <tr class="tabla_mv_cabecera">
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>From</th>
+                    <th>Q</th> 
+                    <th>To</th>
+                    <th>Q</th>
+                    <th>P.U</th>
+                </tr>
+
+                {% for movimento in moviments %}
+                <tr>
+                    <td>{{ movimento.fecha }}</td>
+                    <td>{{ movimento.hora }}</td>
+                    <td>{{ movimento.from }}</td>
+                    <td>{{ movimento.Q }}</td>
+                    <td>{{ movimento.to }}</td>
+                    <td>{{ movimento.Q2 }}</td>
+                    <td>{{ movimento.preciounidad }}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+            <p class="accions">
+                <a href='/purchase' class="button is-primary is-rounded">Añadir</a>
+            </p>
+            
+
+
+        </section>
+        <footer>
+            <div class="container">
+                &copy; 2020 - Todos los derechos reservados
+            </div>
+            
+        </footer>
+    </body>
+</html>

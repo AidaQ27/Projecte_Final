@@ -1,0 +1,119 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>myCrypto | Compra</title>
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/css/bulma.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                myCrypto
+            </div>
+        </header>
+
+        <section class="container">
+            <nav>Inicio </nav>
+
+            <h1>Compra de Cripto</h1>
+
+
+            <div class="columns">
+
+                <div class="column is-half">
+                    <label class="label">From:</label>
+                    <form action="/purchase" method="post">
+                    <div class="control">
+                        <div class="select">
+                            <select name="from" id="from">
+                                <option value="EUR">EUR</option>
+                                <option value="ETH">ETH</option>
+                                <option value="BNB">BNB</option>
+                                <option value="LUNA">LUNA</option>
+                                <option value="SOL">SOL</option>
+                                <option value="BTC">BTC</option>
+                                <option value="BCH">BCH</option>
+                                <option value="LINK">LINK</option>
+                                <option value="ATOM">ATOM</option>
+                                <option value="USDT">USDT</option>
+                            </select>
+                        </div>
+                        <p class="help">Escoge una moneda</p>
+                    </div>
+                </div>
+        
+            
+
+                <div class="column is-half right">
+                    <label class="label">To:</label>
+                    <form action="/purchase" method="post">
+                    <div class="control">
+                        <div class="select">
+                            <select name="to" id="to">
+                                <option value="EUR">EUR</option>
+                                <option value="ETH">ETH</option>
+                                <option value="BNB">BNB</option>
+                                <option value="LUNA">LUNA</option>
+                                <option value="SOL">SOL</option>
+                                <option value="BTC">BTC</option>
+                                <option value="BCH">BCH</option>
+                                <option value="LINK">LINK</option>
+                                <option value="ATOM">ATOM</option>
+                                <option value="USDT">USDT</option>
+                            </select>
+                        </div>
+                        <p class="help">Escoge una moneda</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="columns">
+                <div class="column is-half">
+                    <label class="label ">Cantidad</label>
+                    <div class="control">
+                        <input class="input" type="number" placeholder="number input">
+                    </div>
+                    <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
+                </div>
+
+                <button class="button is-success">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span>Calcular</span>
+                  </button>
+
+              
+
+                <div class="box">
+                    <label class="label">Cantidad</label>
+                        I'm in a box.
+                </div>
+            </div>
+            
+
+
+
+
+
+            
+
+            </form>
+
+
+
+        </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2020 - Todos los derechos reservados
+        </div>
+            
+    </footer>
+    
+
+    </body>
+</html>
