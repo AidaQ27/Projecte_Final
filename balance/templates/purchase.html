@@ -15,11 +15,11 @@
         </header>
 
         <section class="container">
-            <nav>Inicio </nav>
+            
 
             <h1>Compra de Cripto</h1>
 
-            <form action="/purchase" method="post"></form>
+            <form action="{{ url_for('purchase') }}" method="post">
                 <div class="columns">
                     <div class="column is-5">
                         <label class="label" name="from" id="from" >From:</label>
@@ -86,7 +86,8 @@
 
                     <div class="columns">
                         <div class="column is-5">
-                            <button class="button is-primary" name="calcular" id="calcular" >Calcular</button>
+                            <input type="text" name="calcular">
+                            <input type="submit">
                         </div>
 
                         <div class="column is-12">
