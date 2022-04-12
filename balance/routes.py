@@ -1,8 +1,12 @@
 import sqlite3
 from flask import redirect, render_template, request, url_for, flash
+import requests
 from balance import app
 from criptos.models import ProcesaDades, CriptoValorModel
 from balance.forms import MovimentsFrom
+from datetime import datetime
+
+now = datetime.now()
 
 
 
@@ -36,8 +40,13 @@ def compra():
     else:
         desde = request.form.get('from')
         para = request.form.get('to')
-        quantitat_from = request.form.get('cantidadf')
-        calcular = request.form['calcular']
+        quantitat_from = request.form.get('cantidadf')  
+        try:
+            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?time={}apikey={}".format(desde,para,now.time(),"05BF565B-CA92-421A-AF57-699C95894ACE"))
+            # https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
+            return render_template('purchase.html', exchangerate=2.33)
+        except:
+            print("Error")
 
 
         return redirect(url_for('inicio'))

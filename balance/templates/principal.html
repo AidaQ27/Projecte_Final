@@ -1,19 +1,8 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>myCrypto | Movimientos</title>
-        <link rel="stylesheet" href="static/css/styles.css">
-        <link rel="stylesheet" href="static/css/bulma.css">
-    </head>
+{% extends "base.html" %}
+{% block title %} Movimientos {% endblock %}
+{% block container %} 
 
-    <body>
-        <header>
-            <div class="container">
-                myCrypto
-            </div>
-        </header>
+    
         {% with missatges = get_flashed_messages() %}
             {% if missatge %}
             <section class="errors">
@@ -29,7 +18,7 @@
 
 
 
-        <section class="container">
+      
             
             <h1>Movimientos</h1>
 
@@ -96,12 +85,5 @@
             
 
 
-        </section>
-        <footer>
-            <div class="container">
-                &copy; 2020 - Todos los derechos reservados
-            </div>
-            
-        </footer>
-    </body>
-</html>
+        
+{% endblock%}

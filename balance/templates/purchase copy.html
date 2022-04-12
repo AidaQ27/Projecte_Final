@@ -1,13 +1,25 @@
-{% extends "base.html" %}
-{% block title %}Compra de Cripto {% endblock %}
-{% block container %} 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>myCrypto | Compra</title>
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/css/bulma.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                myCrypto
+            </div>
+        </header>
 
-        
+        <section class="container">
             
 
             <h1>Compra de Cripto</h1>
 
-            <form action="" method="post">
+            <form action="{{ url_for('purchase') }}" method="post">
                 <div class="columns">
                     <div class="column is-5">
                         <label class="label" name="from" id="from" >From:</label>
@@ -22,7 +34,7 @@
                                     <option value="BTC">BTC</option>
                                     <option value="BCH">BCH</option>
                                     <option value="LINK">LINK</option>
-                                    <option value="ATOM">ATOM</option>  
+                                    <option value="ATOM">ATOM</option>
                                     <option value="USDT">USDT</option>
                                 </select>
                             </div>
@@ -74,13 +86,14 @@
 
                     <div class="columns">
                         <div class="column is-5">
-                            <input type ="submit" name="action" value="Calcular">
+                            <input type="text" name="calcular">
+                            <input type="submit">
                         </div>
 
                         <div class="column is-12">
                             <div class="box" name="preciounidad" id="preciounidad">
                                 <label class="label">Precio Unidad</label>
-                                   {{ exchangerate }}
+                                    I'm in a box.
                             </div>
                         </div>
                     </div>
@@ -94,5 +107,19 @@
                             <button class="button is-primary">Guardar</button>
                         </div>
                     </div>
+
             </form>
-{% endblock %}  
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            &copy; 2020 - Todos los derechos reservados
+        </div>
+            
+    </footer>
+    
+
+    </body>
+</html>
