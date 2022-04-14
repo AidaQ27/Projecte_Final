@@ -38,13 +38,14 @@ def compra():
     if request.method == 'GET':
         return render_template('purchase.html')
     else:
-        desde = request.form.get('from')
+        desde = request.form.get('from_coin')
         para = request.form.get('to')
-        quantitat_from = request.form.get('cantidadf')  
+         
         try:
-            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?time={}apikey={}".format(desde,para,now.time(),"05BF565B-CA92-421A-AF57-699C95894ACE"))
+            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(desde,para,"05BF565B-CA92-421A-AF57-699C95894ACE"))
             # https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
-            return render_template('purchase.html', exchangerate=2.33)
+            print((resposta.json()['rate']))
+            return render_template('purchase.html', exchangerate=resposta.json()['rate'], from_coin=desde, to=para)
         except:
             print("Error")
 

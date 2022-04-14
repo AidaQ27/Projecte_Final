@@ -10,10 +10,10 @@
             <form action="" method="post">
                 <div class="columns">
                     <div class="column is-5">
-                        <label class="label" name="from" id="from" >From:</label>
+                        <label class="label" name="from_coin" id="from_coin" >From:</label>
                         <div class="control">
                             <div class="select">
-                                <select name="from" id="from">
+                                <select name="from_coin" id="from_coin" value="from_coin">
                                     <option value="EUR">EUR</option>
                                     <option value="ETH">ETH</option>
                                     <option value="BNB">BNB</option>
@@ -36,7 +36,7 @@
                         <label class="label" name="to" id="to">To:</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="to" id="to">
+                                    <select name="to" id="to" value="to">
                                         <option value="EUR">EUR</option>
                                         <option value="ETH">ETH</option>
                                         <option value="BNB">BNB</option>
@@ -59,7 +59,7 @@
                         <div class="column is-5">
                             <label class="label ">Cantidad</label>
                             <div class="control">
-                                <input class="input" type="number" placeholder="Cantidad" name="cantidadf" id="cantidadf" step="'0.01" min="0.01">
+                                <input class="input" type="number" placeholder="Cantidad" name="cantidadf" id="cantidadf">
                             </div>
                             <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
                         </div>

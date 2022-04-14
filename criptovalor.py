@@ -8,5 +8,5 @@ api_key = '05BF565B-CA92-421A-AF57-699C95894ACE'
 
 resposta = requests.get(endpoint.format(moneda_from, moneda_to, api_key))
 
-print(round(resposta.json()['rate'], 2))
+print((resposta.json()['rate']))
 
