@@ -2,88 +2,80 @@
 {% block title %} Movimientos {% endblock %}
 {% block container %} 
 
-    
-        {% with missatges = get_flashed_messages() %}
-            {% if missatge %}
-            <section class="errors">
-                <ul>
-                    {% for missatge in missatges %}
-                        <li class="error-miss">{{ missatge }}</li>
-                    {% endfor %}
-                </ul>
-            </section>
-            {% endif %}
-        {% endwith %}
+    {% with missatges = get_flashed_messages() %}
+        {% if missatge %}
+        <section class="errors">
+            <ul>
+            {% for missatge in missatges %}
+            <li class="error-miss">{{ missatge }}</li>
+            {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    {% endwith %}
 
-
-
-
-      
+    <div class="titol">
+        <h1>Movimientos</h1>
+    </div>    
             
-            <h1>Movimientos</h1>
-
-            
-                <table class="taula_moviments">
-                    <tr class="tabla_mv_cabecera">
-                        <div class="columns">
-                            <div class="column">
-                                Fecha
-                            </div>
-                            <div class="column">
-                                Hora
-                            </div>
-                            <div class="column">
-                                From
-                            </div>
-                            <div class="column">
-                                Q
-                            </div> 
-                            <div class="column">
-                                To
-                            </div>
-                            <div class="column">
-                                Q
-                            </div>
-                            <div class="column">
-                                P.U
-                            </div> 
+            <table class="taula_moviments">
+                <tr class="tabla_mv_cabecera">
+                    <div class="columns">
+                        <div class="column">
+                            Fecha
                         </div>
-                    </tr>
-
-                    {% for movimento in moviments %}
-                    <tr class="tabla_mv_cabecera">
-                        <div class="columns">
-                            <div class="column">
-                                {{ movimento[0] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[1] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[2] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[3] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[4] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[5] }}
-                            </div>
-                            <div class="column">
-                                {{ movimento[6] }}
-                            </div>
+                        <div class="column">
+                            Hora
                         </div>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                        <div class="column">
+                            From
+                        </div>
+                        <div class="column">
+                            Q
+                        </div> 
+                        <div class="column">
+                            To
+                        </div>
+                        <div class="column">
+                            Q
+                        </div>
+                        <div class="column">
+                            P.U
+                        </div> 
+                    </div>
+                </tr>
+
+                {% for movimento in moviments %}
+                <tr class="tabla_mv_cabecera">
+                    <div class="columns">
+                        <div class="column">
+                            {{ movimento[0] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[1] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[2] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[3] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[4] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[5] }}
+                        </div>
+                        <div class="column">
+                            {{ movimento[6] }}
+                        </div>
+                    </div>
+                </tr>
+                {% endfor %}
+            </table>
+           
+
             <p class="accions">
-                <a href='/purchase' class="button is-primary is-rounded">Añadir</a>
-            </p>
-            
-
-
-        
+                <a href='/purchase' class="button is-warning is-focused">Añadir</a>
+            </p>      
 {% endblock%}

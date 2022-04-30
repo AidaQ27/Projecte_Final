@@ -1,98 +1,97 @@
 {% extends "base.html" %}
 {% block title %}Compra de Cripto {% endblock %}
-{% block container %} 
+{% block container %}
 
-        
-            
 
-            <h1>Compra de Cripto</h1>
 
-            <form action="" method="post">
-                <div class="columns">
-                    <div class="column is-5">
-                        <label class="label" name="from_coin" id="from_coin" >From:</label>
-                        <div class="control">
-                            <div class="select">
-                                <select name="from_coin" id="from_coin" value="from_coin">
-                                    <option value="EUR">EUR</option>
-                                    <option value="ETH">ETH</option>
-                                    <option value="BNB">BNB</option>
-                                    <option value="LUNA">LUNA</option>
-                                    <option value="SOL">SOL</option>
-                                    <option value="BTC">BTC</option>
-                                    <option value="BCH">BCH</option>
-                                    <option value="LINK">LINK</option>
-                                    <option value="ATOM">ATOM</option>  
-                                    <option value="USDT">USDT</option>
-                                </select>
-                            </div>
-                            <p class="help">Escoge una moneda</p>
-                        </div>
+
+    <h1>Compra de Cripto</h1>
+
+    <form action="" method="post">
+        <div class="columns">
+            <div class="column is-5">
+                <label class="label" id="from_coin" >From:</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="from_coin" id="from_coin">
+                            <option value="EUR" {% if from_coin =="EUR" %} selected {% endif %} >EUR</option>
+                            <option value="ETH" {% if from_coin =="ETH" %} selected {% endif %} >ETH</option>
+                            <option value="BNB" {% if from_coin =="BNB" %} selected {% endif %} >BNB</option>
+                            <option value="LUNA" {% if from_coin =="LUNA" %} selected {% endif %} >LUNA</option>
+                            <option value="SOL" {% if from_coin =="SOL" %} selected {% endif %} >SOL</option>
+                            <option value="BTC" {% if from_coin =="BTC" %} selected {% endif %} >BTC</option>
+                            <option value="BCH" {% if from_coin =="BCH" %} selected {% endif %} >BCH</option>
+                            <option value="LINK" {% if from_coin =="LINK" %} selected {% endif %} >LINK</option>
+                            <option value="ATOM" {% if from_coin =="ATOM" %} selected {% endif %} >ATOM</option>
+                            <option value="USDT" {% if from_coin =="USDT" %} selected {% endif %} >USDT</option>
+                        </select>
                     </div>
-            
-                
-
-                    <div class="column is-12">
-                        <label class="label" name="to" id="to">To:</label>
-                            <div class="control">
-                                <div class="select">
-                                    <select name="to" id="to" value="to">
-                                        <option value="EUR">EUR</option>
-                                        <option value="ETH">ETH</option>
-                                        <option value="BNB">BNB</option>
-                                        <option value="LUNA">LUNA</option>
-                                        <option value="SOL">SOL</option>
-                                        <option value="BTC">BTC</option>
-                                        <option value="BCH">BCH</option>
-                                        <option value="LINK">LINK</option>
-                                        <option value="ATOM">ATOM</option>
-                                        <option value="USDT">USDT</option>
-                                    </select>
-                                </div>
-                                <p class="help">Escoge una moneda</p>
-                            </div>
-                    </div>
+                    <p class="help">Escoge una moneda</p>
                 </div>
+            </div>
 
 
-                    <div class="columns">
-                        <div class="column is-5">
-                            <label class="label ">Cantidad</label>
-                            <div class="control">
-                                <input class="input" type="number" placeholder="Cantidad" name="cantidadf" id="cantidadf">
-                            </div>
-                            <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
-                        </div>
 
-                        <div class="column is-12">
-                            <div class="box">
-                                <label class="label" name="cantidadt" id="cantidadt" >Cantidad</label>
-                                    I'm in a box.
-                            </div>
-                        </div>
+            <div class="column is-12">
+                <label class="label" id="to">To:</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="to" id="to">
+                            <option value="EUR" {% if to =="EUR" %} selected {% endif %} >EUR</option>
+                            <option value="ETH" {% if to =="ETH" %} selected {% endif %} >ETH</option>
+                            <option value="BNB" {% if to =="BNB" %} selected {% endif %} >BNB</option>
+                            <option value="LUNA" {% if to =="LUNA" %} selected {% endif %} >LUNA</option>
+                            <option value="SOL" {% if to =="SOL" %} selected {% endif %} >SOL</option>
+                            <option value="BTC" {% if to =="BTC" %} selected {% endif %} >BTC</option>
+                            <option value="BCH" {% if to =="BCH" %} selected {% endif %} >BCH</option>
+                            <option value="LINK" {% if to =="LINK" %} selected {% endif %} >LINK</option>
+                            <option value="ATOM" {% if to =="ATOM" %} selected {% endif %} >ATOM</option>
+                            <option value="USDT" {% if to =="USDT" %} selected {% endif %} >USDT</option>
+                        </select>
                     </div>
+                    <p class="help">Escoge una moneda</p>
+                </div>
+            </div>
+        </div>
 
-                    <div class="columns">
-                        <div class="column is-5">
-                            <input type ="submit" name="action" value="Calcular">
-                        </div>
 
-                        <div class="column is-12">
-                            <div class="box" name="preciounidad" id="preciounidad">
-                                <label class="label">Precio Unidad</label>
-                                   {{ exchangerate }}
-                            </div>
-                        </div>
-                    </div>
+        <div class="columns">
+            <div class="column is-5">
+                <label class="label ">Cantidad</label>
+                <div class="control">
+                    <input type="number" placeholder="Cantidad" name="cantidadf" id="cantidadf"
+                           value="{{ request.form['cantidadf'] }}">
+                </div>
+                <p class="help">Introduce la cantidad de la moneda que deseas gastar</p>
+            </div>
 
-                    <div class="columns">
-                        <div class="column is-5" name="borrar" id="borrar">
-                            <button class="button is-primary">Borrar</button>
-                        </div>
+            <div class="column is-12">
+                <div class="box-radius">
+                    <label class="label" name="cantidadt" id="cantidadt" >Cantidad</label>
+                    I'm in a box.
+                </div>
+            </div>
+        </div>
 
-                        <div class="column is-12" name="ok" id="ok" >
-                            <button class="button is-primary">Guardar</button>
-                        </div>
-                    </div>
-            </form>
+        <div class="columns">
+            <div class="column is-5">
+                <input class="button is-warning is-focused" type ="submit" name="action" value="Calcular">
+            </div>
+
+            <div class="column is-12">
+                <div class="box-radius" name="preciounidad" id="preciounidad">
+                    <label class="label">Precio Unidad</label>
+                    {{ exchangerate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons is-right">
+            
+            <input class="button is-warning is-focused" type ="submit" name="action" value="Borrar">
+
+            <input class="button is-warning is-focused" type ="submit" name="action" value="Guardar">
+            
+        </div>
+    </form>
 {% endblock %}  

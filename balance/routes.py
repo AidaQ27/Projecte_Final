@@ -29,32 +29,49 @@ def inicio():
 @app.route('/purchase', methods=['GET', 'POST'])
 def compra():
 
-    """
-    form = MovimentsFrom()
-    return render_template("purchase.html", formulario=form)
-    """
-
-
     if request.method == 'GET':
         return render_template('purchase.html')
     else:
         desde = request.form.get('from_coin')
         para = request.form.get('to')
-         
-        try:
-            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(desde,para,"05BF565B-CA92-421A-AF57-699C95894ACE"))
-            # https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
-            print((resposta.json()['rate']))
-            return render_template('purchase.html', exchangerate=resposta.json()['rate'], from_coin=desde, to=para)
-        except:
-            print("Error")
+        cantidadf = request.form.get('cantidadf')
+        print(request.form['action'])
+        if request.form['action'] == 'Calcular':
+            # PRIMERO CONSULTAR BD PARA SABER SI HAY SUFICIENTE DE ESE TOKEN
 
+            try:
+                # resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(desde,para,"05BF565B-CA92-421A-AF57-699C95894ACE"))
+                # https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
+                # print((resposta.json()['rate']))
+                # return render_template('purchase.html', exchangerate=resposta.json()['rate'], from_coin=desde, to=para)
+                print('desde', desde, 'para', para)
+                return render_template('purchase.html', exchangerate=0.04, from_coin=desde, to=para, cantidadf=cantidadf)
+            except:
+                print("Error")
+        elif request.form['action'] == 'Borrar':
+            return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None)
+        elif request.form['action'] == 'Guardar':
+            print('saving')
+            now = datetime.now()
+            dt_date = now.strftime("%d-%m-%Y")
+            dt_time = now.strftime("%H:%M:%S")
+            print(dt_date, dt_time)
+            con = sqlite3.connect('data/movimientos.db')
+            con.execute(
+                'insert into moviments (fecha,hora,moneda_from,cantidad_from,moneda_to,cantidad_to,precio) values (?,?,?,?,?,?,?)',
+                (
+                    dt_date,
+                    dt_time,
+                    request.form.get('from_coin', type=str),
+                    request.form.get('cantidadf', type=float),
+                    request.form.get('to', type=str),
+                    request.form.get('cantidadf', type=float),
+                    request.form.get('0.04', type=str),
+                )
+            )
+            con.commit()  # IMPRESCINDIBLE HACER COMMIT DESPUES DE INSERTAR
 
         return redirect(url_for('inicio'))
-
-
-#demana_api= CriptoValorModel
-#quantitat_convertida = demana_api.obtenir_quantitat(quantitat_from)
 
 
 
