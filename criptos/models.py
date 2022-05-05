@@ -52,5 +52,55 @@ class ProcesaDades:
 
             return cur.fetchall()
        
-
+    def crear_tabla():
+        con = sqlite3.connect('data/movimientos.db')
         
+        con.execute('''
+
+                    CREATE TABLE "Wallet" (
+	                "Coin"	TEXT,
+	                "Amount"	NUMERIC,
+	                PRIMARY KEY("Coin"))
+
+                    '''
+                    
+        )
+
+        con.commit()
+
+    def lee_movimientos(self):
+        con = sqlite3.connect('data/movimientos.db')
+        cur = con.cursor()
+
+        cur.execute("""
+                    SELECT Coin, Amount
+                    FROM Wallet
+                    """
+        )
+            
+
+        return cur.fetchall()
+
+    def insertar_monedas():
+        con = sqlite3.connect('data/movimientos.db')
+      
+        con.execute("""
+                insert into Wallet (Coin,Amount) values
+                ("EUR", 0),
+                ("ETH", 0),
+                ("BNB", 0),
+                ("LUNA", 0),
+                ("SOL", 0),
+                ("BTC", 0),
+                ("BCH", 0),
+                ("LINK", 0),
+                ("ATOM", 0),
+                ("USDT", 0),
+                ("Total Euros", 0);
+        """)
+        con.commit() 
+
+       
+            
+
+     

@@ -2,6 +2,32 @@
 {% block title %} Estado compra {% endblock %}
 {% block container %} 
     <h1>Estado</h1>
+    <table class="taula_moviments">
+        <tr class="tabla_mv_cabecera">
+            <div class="columns">
+                <div class="column">
+                    Moneda
+                </div>
+                <div class="column">
+                    Cantidad
+                </div>
+            </div>
+        </tr>
+
+        {% for coin in coins %}
+        <tr class="tabla_mv_cabecera">
+            <div class="columns">
+                <div class="column">
+                    {{ coin[0] }}
+                </div>
+                <div class="column">
+                    {{ coin[1] }}
+                </div>  
+            </div>
+        </tr>
+        {% endfor %}
+    </table>
 
 
 {% endblock %}
+

@@ -11,30 +11,29 @@
     </head>
     <body>
         <header>
-            <div class="container">
-                myCrypto
-            </div>
+            
+                <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarExampleTransparentExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                      </a>
+                    </div>
+                  
+                    <div id="navbarBasicExample" class="navbar-menu">
+                      <div class="navbar-start">
+                        <a href="/" class="navbar-item">Inicio</a>
+                        <a href="/purchase" class="navbar-item">Compra</a>
+                        <a href="/status" class="navbar-item">Status</a>
+                        </div>
+                    </div>
+                </nav>
+           
+
         </header>
         
         <section class="container">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                  </a>
-                </div>
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <a href="/principal" class="navbar-item">Inicio</a>
-                    <a href="/purchase" class="navbar-item">Compra</a>
-                    <a href="/status" class="navbar-item">Status</a>
-                    </div>
-                </div>
-            </nav>
             {% block container%}
                
             {% endblock %}
