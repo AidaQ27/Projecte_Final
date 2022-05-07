@@ -10,17 +10,37 @@
 header {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: var(--separacion_defecto);
-    font-size: 38px;
+    font-size: 48px;
     background-color: var(--color-primario);
     color: var(--blanco);
     margin: var(--separacion_defecto);
+    bottom: 10px;
+    text-align: center;
     
 }
 
 div.titol {
     text-align: center;
-    font-weight:  bold;
+    font-size: 38px;
+    font-weight:  600;
+    margin: 30;
+    padding: auto;
+    
+
 }
+
+div.nav_bar {
+    text-align: center;
+
+
+}
+
+div.form_column {
+    font-weight: 700;
+    text-align: justify;
+
+}
+
 
 
 footer {
@@ -29,14 +49,12 @@ footer {
     background-color: var(--color-secundario);
     color: var(--blanco);
     margin: var(--separacion_defecto);
-
-}
-
-footer {
     width: 100%;
     position: absolute;
     bottom: 10px;
+
 }
+
 
 .accions {
     text-align: right;
@@ -49,6 +67,8 @@ footer {
     margin: 10px
 
 }
+
+
 
 
 
