@@ -85,7 +85,7 @@ class ProcesaDades:
         con = sqlite3.connect('data/movimientos.db')
       
         con.execute("""
-                insert into Wallet (Coin,Amount) values
+                INSERT INTO Wallet (Coin,Amount) VALUES
                 ("EUR", 0),
                 ("ETH", 0),
                 ("BNB", 0),
@@ -100,6 +100,13 @@ class ProcesaDades:
         """)
         con.commit() 
 
+    def  borrar_registro():
+        con = sqlite3.connect('data/movimientos.db')
+
+        con.execute("""
+                    DELETE FROM moviments
+                    """)
+        con.commit()
        
             
 

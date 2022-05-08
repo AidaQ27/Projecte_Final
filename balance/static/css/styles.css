@@ -3,7 +3,7 @@
     --color-secundario: #CE9461;
     --negro: #2c363f;
     --blanco: #fafafa;
-    --separacion_defecto: 20px;
+    --separacion_defecto: 10px;
    
 }
 
@@ -23,7 +23,7 @@ div.titol {
     text-align: center;
     font-size: 38px;
     font-weight:  600;
-    margin: 30;
+    margin: 10;
     padding: auto;
     
 

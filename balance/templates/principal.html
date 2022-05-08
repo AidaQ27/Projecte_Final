@@ -17,7 +17,7 @@
     <div class="titol">
         <h1>Movimientos</h1>
     </div>    
-            
+            {% if moviments %}
             <table class="taula_moviments">
                 <div class="capcelera_form">
                     <tr class="tabla_mv_cabecera_a">
@@ -89,7 +89,13 @@
                 </tr>
                 {% endfor %}
             </table>
-           
+            {% endif %}
+            
+            {% if not moviments %}
+            <p>NO HAY MOVIMIENTOS</p>
+            {% endif %}
+
+
 
             <p class="accions">
                 <a href='/purchase' class="button is-warning is-focused">Añadir</a>

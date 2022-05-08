@@ -38,22 +38,37 @@ def compra():
             # PRIMERO CONSULTAR BD PARA SABER SI HAY SUFICIENTE DE ESE TOKEN
 
             try:
-                resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(desde,para,"05BF565B-CA92-421A-AF57-699C95894ACE"))
-                # https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
-                # print((resposta.json()['rate']))
-                # return render_template('purchase.html', exchangerate=resposta.json()['rate'], from_coin=desde, to=para)
-                print('desde', desde, 'para', para)
-                return render_template('purchase.html', exchangerate=resposta, from_coin=desde, to=para, cantidadf=cantidadf)
+                resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))
+                #https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
+                
+                rate = resposta.json()['rate']  
+                rate = "{:.6f}".format(rate)
+                print("yyyy", rate, cantidadf)
+                cantidad_total = float(rate) * float(cantidadf)
+                print(cantidad_total)
+                print("zzzz")
+                return render_template('purchase.html', exchangerate=rate, from_coin=desde, to=para, cantidadt=cantidad_total)
+                #print('desde', desde, 'para', para)
+                #return render_template('purchase.html', exchangerate=resposta, from_coin=desde, to=para, cantidadf=cantidadf)
+
+                
             except:
                 print("Error")
         elif request.form['action'] == 'Borrar':
-            return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None)
+            return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0)
         elif request.form['action'] == 'Guardar':
             print('saving')
             now = datetime.now()
             dt_date = now.strftime("%d-%m-%Y")
             dt_time = now.strftime("%H:%M:%S")
             print(dt_date, dt_time)
+            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))
+                #https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
+                
+            rate = resposta.json()['rate']  
+            rate = "{:.6f}".format(rate)
+            cantidad_total = float(rate) * float(cantidadf)
+
             con = sqlite3.connect('data/movimientos.db')
             con.execute(
                 'insert into moviments (fecha,hora,moneda_from,cantidad_from,moneda_to,cantidad_to,precio) values (?,?,?,?,?,?,?)',
@@ -61,21 +76,15 @@ def compra():
                     dt_date,
                     dt_time,
                     request.form.get('from_coin', type=str),
+                    cantidad_total,
+                    request.form.get('to', type=str), 
                     request.form.get('cantidadf', type=float),
-                    request.form.get('to', type=str),
-                    request.form.get('cantidadf', type=float),
-                    request.form.get('0.04', type=str),
+                    rate,
                 )
             )
             con.commit()  # IMPRESCINDIBLE HACER COMMIT DESPUES DE INSERTAR
 
         return redirect(url_for('inicio'))
-
-
-
-
-
-
 
 
 @app.route('/status')
@@ -99,3 +108,7 @@ def estado():
 @app.route('/kevin')
 def kevin():
     ProcesaDades.insertar_monedas()
+
+@app.route('/lola')
+def lola():
+    ProcesaDades.borrar_registro()
