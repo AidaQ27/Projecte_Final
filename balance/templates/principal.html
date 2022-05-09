@@ -34,22 +34,22 @@
                             </div>
                             <div class="column">
                                 <div class="form_column">
-                                    From
+                                    Moneda origen
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="form_column">
-                                    Q
+                                    Cantidad
                                 </div>
                             </div> 
                             <div class="column">
                                 <div class="form_column">
-                                    To
+                                    Moneda destino
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="form_column">
-                                    Q
+                                    Cantidad
                                 </div>
                             </div>
                             <div class="column">
@@ -90,9 +90,11 @@
                 {% endfor %}
             </table>
             {% endif %}
-            
+
             {% if not moviments %}
-            <p>NO HAY MOVIMIENTOS</p>
+            <div class="titolmoviments">
+                <p>No existen movimientos registrados en la tabla</p>
+            </div>
             {% endif %}
 
 

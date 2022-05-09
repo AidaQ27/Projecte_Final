@@ -84,6 +84,11 @@ def compra():
             )
             con.commit()  # IMPRESCINDIBLE HACER COMMIT DESPUES DE INSERTAR
 
+            ProcesaDades.comprar_moneda(cantidadf, request.form.get('to'))
+            if request.form.get('from_coin') == "EUR":
+                ProcesaDades.comprar_moneda(round(cantidad_total, 2), "Total Euros")
+            else: 
+                ProcesaDades.comprar_moneda(-cantidad_total, request.form.get('from_coin'))
         return redirect(url_for('inicio'))
 
 

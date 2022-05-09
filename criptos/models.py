@@ -106,8 +106,20 @@ class ProcesaDades:
         con.execute("""
                     DELETE FROM moviments
                     """)
+        con.execute("""
+                    DELETE FROM Wallet
+                    """)
+        
         con.commit()
-       
-            
+    
+    def comprar_moneda(cantidad, coin):
+        con = sqlite3.connect('data/movimientos.db')
 
+        con.execute(f"""
+                    UPDATE Wallet
+                    SET Amount = Amount + {cantidad}
+                    WHERE Coin = '{coin}';
+                    """)
+            
+        con.commit()
      
