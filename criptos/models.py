@@ -48,25 +48,9 @@ class ProcesaDades:
                             ORDER BY fecha;
                         """
             )
-            
-
-            return cur.fetchall()
-       
-    def crear_tabla():
-        con = sqlite3.connect('data/movimientos.db')
         
-        con.execute('''
+            return cur.fetchall()
 
-                    CREATE TABLE "Wallet" (
-	                "Coin"	TEXT,
-	                "Amount"	NUMERIC,
-	                PRIMARY KEY("Coin"))
-
-                    '''
-                    
-        )
-
-        con.commit()
 
     def lee_movimientos(self):
         con = sqlite3.connect('data/movimientos.db')
@@ -99,18 +83,6 @@ class ProcesaDades:
                 ("Total Euros", 0);
         """)
         con.commit() 
-
-    def  borrar_registro():
-        con = sqlite3.connect('data/movimientos.db')
-
-        con.execute("""
-                    DELETE FROM moviments
-                    """)
-        con.execute("""
-                    DELETE FROM Wallet
-                    """)
-        
-        con.commit()
     
     def comprar_moneda(cantidad, coin):
         con = sqlite3.connect('data/movimientos.db')
@@ -122,4 +94,19 @@ class ProcesaDades:
                     """)
             
         con.commit()
-     
+    
+    def get_cantidad_monedas(coin):
+        con = sqlite3.connect('data/movimientos.db')
+
+        cur = con.cursor()
+
+        cur.execute(f"""
+                    SELECT Amount
+                    FROM Wallet
+                    WHERE Coin = '{coin}';
+                    """
+        )
+          
+        return cur.fetchone()
+
+

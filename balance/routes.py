@@ -42,47 +42,53 @@ def compra():
                 
                 rate = resposta.json()['rate']  
                 rate = "{:.6f}".format(rate)
-                print("yyyy", rate, cantidadf)
                 cantidad_total = float(rate) * float(cantidadf)
-                print(cantidad_total)
-                print("zzzz")
-                return render_template('purchase.html', exchangerate=rate, from_coin=desde, to=para, cantidadt=cantidad_total)
+                return render_template('purchase.html', exchangerate=rate, from_coin=desde, to=para, cantidadt=cantidad_total, missatge=None)
      
             except:
-                print("Error")
+                return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="Error al conectar con la API")
         elif request.form['action'] == 'Borrar':
-            return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0)
+            return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge=None)
         elif request.form['action'] == 'Guardar':
             # Asegura que hi han suficients monedes per comprar
-            
-            now = datetime.now()
-            dt_date = now.strftime("%d-%m-%Y")
-            dt_time = now.strftime("%H:%M:%S")
-            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))   
-            rate = resposta.json()['rate']  
-            rate = "{:.6f}".format(rate)
-            cantidad_total = float(rate) * float(cantidadf)
+            from_coin = request.form.get('from_coin')
 
-            con = sqlite3.connect('data/movimientos.db')
-            con.execute(
-                'insert into moviments (fecha,hora,moneda_from,cantidad_from,moneda_to,cantidad_to,precio) values (?,?,?,?,?,?,?)',
-                (
-                    dt_date,
-                    dt_time,
-                    request.form.get('from_coin', type=str),
-                    cantidad_total,
-                    request.form.get('to', type=str), 
-                    request.form.get('cantidadf', type=float),
-                    rate,
+            if from_coin != "EUR" and ProcesaDades.get_cantidad_monedas(from_coin)[0] < float(cantidadf):
+
+                return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="No hay suficientes fondos de la moneda elegida")
+            else:
+                now = datetime.now()
+                dt_date = now.strftime("%d-%m-%Y")
+                dt_time = now.strftime("%H:%M:%S")
+                try:
+                    resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))   
+                    rate = resposta.json()['rate'] 
+                except:
+                    return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="Error al conectar con la API")
+
+                rate = "{:.6f}".format(rate)
+                cantidad_total = float(rate) * float(cantidadf)
+
+                con = sqlite3.connect('data/movimientos.db')
+                con.execute(
+                    'insert into moviments (fecha,hora,moneda_from,cantidad_from,moneda_to,cantidad_to,precio) values (?,?,?,?,?,?,?)',
+                    (
+                        dt_date,
+                        dt_time,
+                        request.form.get('from_coin', type=str),
+                        cantidad_total,
+                        request.form.get('to', type=str), 
+                        request.form.get('cantidadf', type=float),
+                        rate,
+                    )
                 )
-            )
-            con.commit()  
+                con.commit()  
 
-            ProcesaDades.comprar_moneda(cantidadf, request.form.get('to'))
-            if request.form.get('from_coin') == "EUR":
-                ProcesaDades.comprar_moneda(round(cantidad_total, 2), "Total Euros")
-            else: 
-                ProcesaDades.comprar_moneda(-cantidad_total, request.form.get('from_coin'))
+                ProcesaDades.comprar_moneda(cantidadf, request.form.get('to'))
+                if request.form.get('from_coin') == "EUR":
+                    ProcesaDades.comprar_moneda(round(cantidad_total, 2), "Total Euros")
+                else: 
+                    ProcesaDades.comprar_moneda(-cantidad_total, request.form.get('from_coin'))
         return redirect(url_for('inicio'))
 
 
@@ -100,14 +106,3 @@ def estado():
 
 
 
-#@app.route('/creartabla')
-#def crear_tabla():
-    #ProcesaDades.crear_tabla()
-
-@app.route('/kevin')
-def kevin():
-    ProcesaDades.insertar_monedas()
-
-@app.route('/lola')
-def lola():
-    ProcesaDades.borrar_registro()
