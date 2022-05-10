@@ -26,7 +26,7 @@ stock del usuario. Al final se muestra el total de euros invertidos, desde el in
 Debes pedir una ApiKey a la página [coinApi.io](https://www.coinapi.io/)
 Y debes:
 
-1. Copiar el fichero 'config_template.py'
+1. Copiar el fichero 'criptos/config_template.py'
 2. Introducir tu APIKEY en el nuevo fichero.
 3. Renombrarlo a 'config.py'
 
