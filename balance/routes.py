@@ -3,7 +3,7 @@ from flask import redirect, render_template, request, url_for, flash
 import requests
 from balance import app
 from criptos.models import ProcesaDades
-
+from criptos.config import API_KEY
 from datetime import datetime
 
 now = datetime.now()
@@ -37,7 +37,7 @@ def compra():
         if request.form['action'] == 'Calcular':
 
             try:
-                resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))
+                resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde, API_KEY))
                 
                 rate = resposta.json()['rate']  
                 rate = "{:.6f}".format(rate)
@@ -59,7 +59,7 @@ def compra():
                 dt_date = now.strftime("%d-%m-%Y")
                 dt_time = now.strftime("%H:%M:%S")
                 try:
-                    resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))   
+                    resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,API_KEY))   
                     rate = resposta.json()['rate'] 
                 except:
                     return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="Error al conectar con la API")
