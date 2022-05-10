@@ -21,15 +21,45 @@ Si no hay movimientos resgistrados se mostrará un mensaje, que no existen movim
 stock del usuario. Al final se muestra el total de euros invertidos, desde el inicio.
 
 
-## ApiKey
+# Intrucciones a seguir al descargar el proyecto
+### **Crea tu entorno virtual**
+
+```
+python -m venv venv
+```
+
+### Activa tu entorno virtual
+
+```
+venv\Scripts\activate
+```
+### Instala las dependencias
+
+```
+pip install -r requeriments.txt
+```
+
+## **ApiKey**
 
 Debes pedir una ApiKey a la página [coinApi.io](https://www.coinapi.io/)
 Y debes:
 
-1. Copiar el fichero 'config_template.py'
-2. Introducir tu APIKEY en el nuevo fichero.
-3. Renombrarlo a 'config.py'
+### Copiar el fichero
+```
+criptos/config_template.py
+```
 
+### Introducir tu APIKEY en el nuevo fichero.
+```
+API_KEY = "Tu ApiKey aqui"
+```
+
+### Renombrar el fichero a 'config.py'
+
+## Para arrancar la App, ejecuta en el terminal:
+```
+run.py
+```
 
 
 **Este proyecto ha sido realizado por:**
