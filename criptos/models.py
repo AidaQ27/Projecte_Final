@@ -13,7 +13,6 @@ class CriptoValorModel:
         self.desti = desti
         self.temps = now.time()
         
-
         self.taxa = 0.0
 
     
