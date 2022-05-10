@@ -3,7 +3,7 @@ from flask import redirect, render_template, request, url_for, flash
 import requests
 from balance import app
 from criptos.models import ProcesaDades
-from balance.forms import MovimentsFrom
+
 from datetime import datetime
 
 now = datetime.now()
@@ -35,7 +35,6 @@ def compra():
         cantidadf = request.form.get('cantidadf')
         print(request.form['action'])
         if request.form['action'] == 'Calcular':
-            # PRIMERO CONSULTAR BD PARA SABER SI HAY SUFICIENTE DE ESE TOKEN
 
             try:
                 resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))
@@ -48,23 +47,18 @@ def compra():
                 print(cantidad_total)
                 print("zzzz")
                 return render_template('purchase.html', exchangerate=rate, from_coin=desde, to=para, cantidadt=cantidad_total)
-                #print('desde', desde, 'para', para)
-                #return render_template('purchase.html', exchangerate=resposta, from_coin=desde, to=para, cantidadf=cantidadf)
-
-                
+     
             except:
                 print("Error")
         elif request.form['action'] == 'Borrar':
             return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0)
         elif request.form['action'] == 'Guardar':
-            print('saving')
+            # Asegura que hi han suficients monedes per comprar
+            
             now = datetime.now()
             dt_date = now.strftime("%d-%m-%Y")
             dt_time = now.strftime("%H:%M:%S")
-            print(dt_date, dt_time)
-            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))
-                #https://rest.coinapi.io/v1/exchangerate/EUR/BTC?time={}apikey=05BF565B-CA92-421A-AF57-699C95894ACE
-                
+            resposta = requests.get("https://rest.coinapi.io/v1/exchangerate/{}/{}?apikey={}".format(para,desde,"05BF565B-CA92-421A-AF57-699C95894ACE"))   
             rate = resposta.json()['rate']  
             rate = "{:.6f}".format(rate)
             cantidad_total = float(rate) * float(cantidadf)
@@ -82,7 +76,7 @@ def compra():
                     rate,
                 )
             )
-            con.commit()  # IMPRESCINDIBLE HACER COMMIT DESPUES DE INSERTAR
+            con.commit()  
 
             ProcesaDades.comprar_moneda(cantidadf, request.form.get('to'))
             if request.form.get('from_coin') == "EUR":

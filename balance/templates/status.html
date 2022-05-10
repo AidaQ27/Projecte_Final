@@ -1,32 +1,39 @@
 {% extends "base.html" %}
 {% block title %} Estado compra {% endblock %}
-{% block container %} 
-    <h1>Estado</h1>
-    <table class="taula_moviments">
-        <tr class="tabla_mv_cabecera">
-            <div class="columns">
-                <div class="column">
-                    Moneda
-                </div>
-                <div class="column">
-                    Cantidad
-                </div>
-            </div>
-        </tr>
+{% block container %}
 
-        {% for coin in coins %}
-        <tr class="tabla_mv_cabecera">
-            <div class="columns">
-                <div class="column">
-                    {{ coin[0] }}
+    <div class="titolcripto">
+        <h1>Estado</h1>
+    </div>
+
+    <div class="formulariostatus">
+        <table class="taula_moviments">
+            <tr class="tabla_mv_cabecera">
+                <div class="columns">
+                    <div class="column">
+                        <strong>Moneda</strong>
+                    </div>
+                    <div class="column">
+                        <strong>Cantidad</strong>
+                    </div>
                 </div>
-                <div class="column">
-                    {{ coin[1] }}
-                </div>  
-            </div>
-        </tr>
-        {% endfor %}
-    </table>
+            </tr>
+        
+
+            {% for coin in coins %}
+            <tr class="tabla_mv_cabecera_2">
+                <div class="columns">
+                    <div class="column">
+                        {{ coin[0] }}
+                    </div>
+                    <div class="column">
+                        {{ coin[1] }}
+                    </div>  
+                </div>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 
 {% endblock %}
