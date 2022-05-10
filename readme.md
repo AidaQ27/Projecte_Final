@@ -20,6 +20,17 @@ Si no hay movimientos resgistrados se mostrará un mensaje, que no existen movim
 **3) Status** - Muestra por pantalla el estado actual de la inversión, y el valor actual del total de las criptomonedas que existen en el
 stock del usuario. Al final se muestra el total de euros invertidos, desde el inicio.
 
+## Crea tu entorno virtual
+
+'''
+python -m venv venv
+'''
+
+## Activa tu entorno virtual
+
+'''
+venv\Scripts\activate
+'''
 
 ## ApiKey
 
