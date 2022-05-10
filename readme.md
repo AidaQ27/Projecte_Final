@@ -56,6 +56,10 @@ API_KEY = "Tu ApiKey aqui"
 
 ### Renombrar el fichero a 'config.py'
 
+## Para arrancar la App, ejecuta en el terminal:
+```
+run.py
+```
 
 
 **Este proyecto ha sido realizado por:**
