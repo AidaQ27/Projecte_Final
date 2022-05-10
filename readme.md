@@ -1,7 +1,7 @@
+
 # App Web - Registro de movimientos de criptomonedas
 
 En la App hacemos un registro de compra/venta de criptos, para jugar con los valores para ver si podemos hacer crecer nuestra inversión.
-
 
 ## Páginas
 

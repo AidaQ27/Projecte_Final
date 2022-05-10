@@ -68,6 +68,10 @@ div.formulariostatus {
     font-size: 18px;
 }
 
+div.error {
+    font-size: 35px;
+    text-align: center;
+}
 
 
 
