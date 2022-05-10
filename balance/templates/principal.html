@@ -101,5 +101,17 @@
 
             <p class="accions">
                 <a href='/purchase' class="button is-warning is-focused">Añadir</a>
-            </p>      
+            </p> 
+            
+            
+            {% if missatge %}
+            <section class="errors">
+                <div class="error">
+                    <ul>
+                        <li class="error-miss">{{ missatge }}</li>
+                    </ul>
+                </div>
+            </section>
+            {% endif %}
+            
 {% endblock%}
