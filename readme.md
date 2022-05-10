@@ -1,3 +1,10 @@
+## Tecnologias Utilizadas para esta App
+- Python
+- Flask 2.1.1
+- Jinja
+- Sqlite - BBDD
+- Bulma
+
 
 # App Web - Registro de movimientos de criptomonedas
 
@@ -16,7 +23,7 @@ stock del usuario. Al final se muestra el total de euros invertidos, desde el in
 
 ## ApiKey
 
-Debes pedir una ApiKey a la página coinApi.io
+Debes pedir una ApiKey a la página [coinApi.io](https://www.coinapi.io/)
 Y debes:
 
 1. Copiar el fichero 'config_template.py'
@@ -24,3 +31,6 @@ Y debes:
 3. Renombrarlo a 'config.py'
 
 
+
+**Este proyecto ha sido realizado por:**
+[Aida Queralt](https://github.com/AidaQ27)
