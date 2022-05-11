@@ -2,6 +2,7 @@
 - Python
 - Flask 2.1.1
 - Jinja
+- Flask - WTF 1.0.1 
 - Sqlite - BBDD
 - Bulma
 
@@ -46,7 +47,7 @@ Y debes:
 
 ### Copiar el fichero
 ```
-criptos/config_template.py
+criptos/configtemplate.py
 ```
 
 ### Introducir tu APIKEY en el nuevo fichero.
