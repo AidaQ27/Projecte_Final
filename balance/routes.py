@@ -45,6 +45,7 @@ def compra():
                 return render_template('purchase.html', exchangerate=rate, from_coin=desde, to=para, cantidadt=cantidad_total, missatge=None)
             except:
                 return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="Error al conectar con la API")
+        
         elif request.form['action'] == 'Borrar':
             return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge=None)
         elif request.form['action'] == 'Guardar':
@@ -52,8 +53,10 @@ def compra():
             from_coin = request.form.get('from_coin')
 
             if from_coin != "EUR" and ProcesaDades.get_cantidad_monedas(from_coin)[0] < float(cantidadf):
-
                 return render_template('purchase.html', exchangerate=None, from_coin='EUR', to='EUR', cantidadf=None, cantidadt=0, missatge="No hay suficientes fondos de la moneda elegida")
+            elif desde == para:
+                return render_template('purchase.html', exchangerate=None, from_coin=desde, to=para, cantidadf=None, cantidadt=0, missatge="No se puede comprar la misma moneda")
+
             else:
                 now = datetime.now()
                 dt_date = now.strftime("%d-%m-%Y")
