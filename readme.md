@@ -59,7 +59,7 @@ API_KEY = "Tu ApiKey aqui"
 
 ## Para arrancar la App, ejecuta en el terminal:
 ```
-run.py
+flask run
 ```
 
 
